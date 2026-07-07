@@ -10,26 +10,30 @@
         </section>
     <?php endif; ?>
 
-    <?php if (!empty($this->options->sidebarBlock) && in_array('ShowRecentComments', $this->options->sidebarBlock)): ?>
-        <section class="widget">
-            <h3 class="widget-title"><?php _e('最近回复'); ?></h3>
-            <ul class="widget-list">
-                <?php \Widget\Comments\Recent::alloc()->to($comments); ?>
-                <?php while ($comments->next()): ?>
-                    <li>
-                        <a href="<?php $comments->permalink(); ?>"><?php $comments->author(false); ?></a>: <?php $comments->excerpt(35, '...'); ?>
-                    </li>
-                <?php endwhile; ?>
-            </ul>
-        </section>
-    <?php endif; ?>
-
     <?php if (!empty($this->options->sidebarBlock) && in_array('ShowCategory', $this->options->sidebarBlock)): ?>
         <section class="widget">
             <h3 class="widget-title"><?php _e('分类'); ?></h3>
             <?php \Widget\Metas\Category\Rows::alloc()->listCategories('wrapClass=widget-list'); ?>
         </section>
     <?php endif; ?>
+
+    <!-- 新增标签模块 -->
+    <section class="widget">
+        <h3 class="widget-title"><?php _e('标签'); ?></h3>
+        <div class="widget-list tag-cloud" style="padding:6px 0;line-height:2;">
+            <?php \Widget\Metas\Tag\Cloud::alloc([
+                'sort' => 'count',
+                'ignoreZeroCount' => true,
+                'desc' => true,
+                'limit' => 99
+            ])->to($tags); ?>
+            <?php while ($tags->next()): ?>
+                <a href="<?php $tags->permalink(); ?>" style="margin:0 6px 5px 0; font-size:<?php echo rand(12,16); ?>px; color:#337ab7;">
+                    <?php $tags->name(); ?>
+                </a>
+            <?php endwhile; ?>
+        </div>
+    </section>
 
     <?php if (!empty($this->options->sidebarBlock) && in_array('ShowArchive', $this->options->sidebarBlock)): ?>
         <section class="widget">
