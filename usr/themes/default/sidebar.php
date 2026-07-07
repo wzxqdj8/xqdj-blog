@@ -17,23 +17,22 @@
         </section>
     <?php endif; ?>
 
-    <!-- 新增标签模块 -->
-    <section class="widget">
-        <h3 class="widget-title"><?php _e('标签'); ?></h3>
-        <div class="widget-list tag-cloud" style="padding:6px 0;line-height:2;">
-            <?php \Widget\Metas\Tag\Cloud::alloc([
-                'sort' => 'count',
-                'ignoreZeroCount' => true,
-                'desc' => true,
-                'limit' => 99
-            ])->to($tags); ?>
-            <?php while ($tags->next()): ?>
-                <a href="<?php $tags->permalink(); ?>" style="margin:0 6px 5px 0; font-size:<?php echo rand(12,16); ?>px; color:#337ab7;">
-                    <?php $tags->name(); ?>
-                </a>
-            <?php endwhile; ?>
-        </div>
-    </section>
+<section class="widget">
+    <h3 class="widget-title"><?php _e('标签'); ?></h3>
+    <div class="widget-list" style="padding:6px 0;line-height:2;">
+        <?php \Widget\Metas\Tag\Cloud::alloc([
+            'sort' => 'count',
+            'ignoreZeroCount' => true,
+            'desc' => true,
+            'limit' => 99
+        ])->to($tags); ?>
+        <?php while ($tags->next()): ?>
+            <a href="<?php $tags->permalink(); ?>" style="margin:0 6px 5px 0; font-size:inherit;">
+                <?php $tags->name(); ?>
+            </a>
+        <?php endwhile; ?>
+    </div>
+</section>
 
     <?php if (!empty($this->options->sidebarBlock) && in_array('ShowArchive', $this->options->sidebarBlock)): ?>
         <section class="widget">
