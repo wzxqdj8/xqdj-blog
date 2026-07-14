@@ -3,13 +3,13 @@
 <footer id="rin-footer" style="text-align:center; padding:12px 0; font-size:14px; color:#666; line-height:1.2;">
     <!-- 第一行：隐私政策、免责声明、站点地图、Robots协议 -->
     <div style="margin:0;">
-    <a href="/privacy">隐私政策</a> |
+    <a href="/privacy">隐私政策</a>
         &nbsp;|&nbsp;
-    <a href="/statement">免责声明</a> |
+    <a href="/statement">免责声明</a>
         &nbsp;|&nbsp;
-    <a href="/sitemap.xml">站点地图</a> |
+    <a href="/sitemap.xml">站点地图</a>
         &nbsp;|&nbsp;
-    <a href="/sitemap.xml">>Robots协议</a>
+    <a href="/sitemap.xml">Robots协议</a>
     </div>
 
     <!-- 第二行：版权 + Cloudflare防御 -->
