@@ -1,25 +1,29 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 
-<footer id="rin-footer" style="text-align:center; padding:20px 0; font-size:14px; color:#666; line-height:1.8;">
-    <!-- SEO底部导航（适配/{slug}独立页面路由） -->
-    <div style="margin-bottom:10px;">
-    <a href="/privacy">隐私政策</a> |
-    <a href="/statement">免责声明</a> |
-    <a href="/sitemap.xml">站点地图</a> |
-    <a href="/robots.txt">Robots协议</a>
-    </div>
-
-    <!-- 版权、站点标识、Cloudflare -->
-    <div>Copyright 2026 ©版权所有
-        <a href="<?php $this->options->siteUrl(); ?>" id="bg-link"><?php $this->options->title(); ?></a>
+<footer id="rin-footer" style="text-align:center; padding:15px 0; font-size:14px; color:#666; line-height:1.3;">
+    <!-- 第一行：隐私政策、免责声明、站点地图、Robots -->
+    <div style="margin:0;">
+        <a href="<?php $this->options->siteUrl(); ?>privacy.html">隐私政策</a>
         &nbsp;|&nbsp;
-        <a href="https://dash.cloudflare.com/" class="active">
-            <img src="https://img.shields.io/badge/Cloudflare加速防御-green?style=flat&logo=Claris" alt="Cloudflare网站加速防护" style="height:18px;vertical-align:middle;">
-        </a>
+        <a href="<?php $this->options->siteUrl(); ?>disclaimer.html">免责声明</a>
+        &nbsp;|&nbsp;
+        <a href="<?php $this->options->siteUrl(); ?>sitemap.xml">站点地图</a>
+        &nbsp;|&nbsp;
+        <a href="<?php $this->options->siteUrl(); ?>robots.txt">Robots协议</a>
     </div>
 
-    <!-- 运行时长 + 本地访问统计 -->
-    <div style="margin-top:8px;font-size:12px;">
+    <!-- 第二行：版权信息，margin极小 -->
+    <div style="margin:3px 0;">
+        Copyright 2026 ©版权所有 
+        <a href="<?php $this->options->siteUrl(); ?>" id="bg-link" target="_blank"><?php $this->options->title(); ?></a>
+    </div>
+
+    <!-- 第三行：Cloudflare + 运行时长 + 访问量 -->
+    <div style="margin:3px 0; font-size:12px;">
+        <a href="https://dash.cloudflare.com/" class="active">
+            <img src="https://img.shields.io/badge/Cloudflare加速防御-green?style=flat&logo=Claris" alt="Cloudflare" style="height:18px;vertical-align:middle;">
+        </a>
+        &nbsp;&nbsp;
         <span style="color:#FFB448; font-weight:bold;">本站已安全运行:</span>
         <span id="momk"></span>
         &nbsp;&nbsp;
@@ -28,10 +32,10 @@
     </div>
 
     <script language=javascript>
-        // 建站计时
+        // 网站运行计时
         function show_date_time(){
-            window.setTimeout("show_date_time()", 1000);
-            BirthDay=new Date("06-15-2026 09:12:18");
+            window.setTimeout("show_date_time()", 10);
+            BirthDay=new Date("07-07-2026 09:12:18");
             today=new Date();
             timeold=(today.getTime()-BirthDay.getTime());
             daysold=Math.floor(timeold/(24*60*60*1000));
@@ -42,8 +46,8 @@
         }
         show_date_time();
 
-        // 本地访客计数
-        let baseVisit = 1000;
+        // 本地访客统计
+        let baseVisit = 10;
         let count = localStorage.getItem("visitCount") ? parseInt(localStorage.getItem("visitCount")) : baseVisit;
         count++;
         localStorage.setItem("visitCount", count);
@@ -63,13 +67,13 @@
             75%{color:#66e616;}
             100% {color:#67bd31;}
         }
+        /* 底部链接统一浅灰 hover变色 */
         #rin-footer a {
-            color: #666;
-            text-decoration: none;
+            color:#666;
+            text-decoration:none;
         }
         #rin-footer a:hover {
-            color: #0096ff;
-            text-decoration: underline;
+            color:#007bff;
         }
     </style>
 </footer>
